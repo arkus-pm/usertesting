@@ -30,7 +30,7 @@ const canvas = document.getElementsByTagName('canvas')[0];
 resizeCanvas();
 
 let config = {
-    SIM_RESOLUTION: 128,
+    SIM_RESOLUTION: 256,
     DYE_RESOLUTION: 512,
     CAPTURE_RESOLUTION: 512,
     DENSITY_DISSIPATION: 1,
@@ -40,7 +40,7 @@ let config = {
     CURL: 30,
     SPLAT_RADIUS: 0.25,
     SPLAT_FORCE: 6000,
-    SHADING: true,
+    SHADING: false,
     COLORFUL: true,
     COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
@@ -66,19 +66,34 @@ const PresetType = {
 function updatePreset (preset) {
     switch (preset) {
     case PresetType.LOW:
-//        config.DYE_RESOLUTION = 128;
-//        config.DENSITY_DISSIPATION = 0.01;
-//        config.SPLAT_RADIUS = 0.01;
+        config.DENSITY_DISSIPATION = 0.8;
+        config.VELOCITY_DISSIPATION = 0.8;
+        config.PRESSURE = 0.5;
+        config.CURL = 0;
+        config.SPLAT_RADIUS = 0.4;
+        config.BLOOM_INTENSITY = 0.2;
+        config.BLOOM_THRESHOLD = 0.6;
+        config.SUNRAYS_WEIGHT = 0.5;
         break;
     case PresetType.MEDIUM:
-//        config.DYE_RESOLUTION = 256;
-//        config.DENSITY_DISSIPATION = 0.5;
-//        config.SPLAT_RADIUS = 0.25;
+        config.DENSITY_DISSIPATION = 1.6;
+        config.VELOCITY_DISSIPATION = 2;
+        config.PRESSURE = 0.6;
+        config.CURL = 10;
+        config.SPLAT_RADIUS = 0.6;
+        config.BLOOM_INTENSITY = 0.6;
+        config.BLOOM_THRESHOLD = 0.8;
+        config.SUNRAYS_WEIGHT = 0.8;
         break;
     case PresetType.HIGH:
-//        config.DYE_RESOLUTION = 512;
-//        config.DENSITY_DISSIPATION = 1;
-//        config.SPLAT_RADIUS = 0.9;
+        config.DENSITY_DISSIPATION = 4;
+        config.VELOCITY_DISSIPATION = 4;
+        config.PRESSURE = 0.8;
+        config.CURL = 50;
+        config.SPLAT_RADIUS = 1;
+        config.BLOOM_INTENSITY = 1.5;
+        config.BLOOM_THRESHOLD = 1;
+        config.SUNRAYS_WEIGHT = 1;
         break;
     default:
         break;
